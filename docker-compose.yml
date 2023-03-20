@@ -1,0 +1,49 @@
+version: '3.5'
+
+services:
+  php-1:
+    build: ./docker/php
+    container_name: s1-php
+    environment:
+      XDEBUG_CONFIG: "zend_extension=xdebug.so profiler_enable=1 remote_enable=1 remote_handler=dbgp remote_mode=req remote_host=host.docker.internal remote_port=9000 remote_autostart=1 remote_connect_back=1 idekey=PHPSTORM"
+      PHP_IDE_CONFIG: "serverName=Docker"
+      APP_ENV: "s1"
+    volumes:
+      - .:/var/www
+  nginx:
+    image: nginx:alpine
+    container_name: s1-nginx
+    ports:
+      - 8081:80
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+  pgsql:
+    image: postgres:15
+    container_name: multiserver-pgsql
+    volumes:
+      - multiserver-pgsql-data:/var/lib/postgresql/data
+    environment:
+      TZ: "Europe/Kiev"
+      PGTZ: "Europe/Kiev"
+      POSTGRES_DB: upwex-local
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5433:5432
+  redis:
+    container_name: multiserver-redis
+    image: redis
+    volumes:
+      - multiserver-redis:/data
+    ports:
+      - 6379
+networks:
+  default:
+    name: multiserver
+    driver: bridge
+volumes:
+  multiserver-pgsql-data:
+    driver: local
+  multiserver-redis:
+    driver: local

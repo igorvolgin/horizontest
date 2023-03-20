@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  php-2:
+    build: ./docker/php
+    container_name: s2-php
+    environment:
+      APP_ENV: "s2"
+    volumes:
+      - .:/var/www
+networks:
+  default:
+    name: multiserver
+    driver: bridge
