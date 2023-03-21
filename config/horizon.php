@@ -212,7 +212,7 @@ return [
         ],
         's3' => [
             'supervisor-1' => [
-                'maxProcesses' => 6,
+                'maxProcesses' => 12,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
