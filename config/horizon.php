@@ -205,7 +205,7 @@ return [
         ],
         's2' => [
             'supervisor-1' => [
-                'maxProcesses' => 2,
+                'maxProcesses' => 4,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
