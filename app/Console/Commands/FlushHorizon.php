@@ -20,7 +20,7 @@ class FlushHorizon extends Command
      *
      * @var string
      */
-    protected $description = 'Create n test tasks';
+    protected $description = 'Flush failed jobs';
 
     /**
      * Execute the console command.
