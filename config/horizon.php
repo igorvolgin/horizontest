@@ -198,21 +198,21 @@ return [
     'environments' => [
         's1' => [
             'supervisor-1' => [
-                'maxProcesses' => 1,
+                'maxProcesses' => 2,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
         ],
         's2' => [
             'supervisor-1' => [
-                'maxProcesses' => 1,
+                'maxProcesses' => 2,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
         ],
         's3' => [
             'supervisor-1' => [
-                'maxProcesses' => 1,
+                'maxProcesses' => 3,
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
