@@ -27,7 +27,7 @@ class createNTasks extends Command
     public function handle(): void
     {
         for ($i = 1; $i <= $this->argument('n'); $i++) {
-            CreateRecord::dispatch();
+            CreateRecord::dispatch($i);
         }
     }
 }

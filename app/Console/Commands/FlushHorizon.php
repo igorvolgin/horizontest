@@ -31,8 +31,7 @@ class FlushHorizon extends Command
         Redis::connection()
             ->del([config('horizon.prefix').'failed:*']);
         $this->info('each individual failed job flushed');
-        Redis::connection()
-            ->del([config('horizon.prefix').'failed_jobs']);
+        Redis::connection('horizon')->del('failed_jobs');
         $this->info('failed_jobs flushed');
     }
 }

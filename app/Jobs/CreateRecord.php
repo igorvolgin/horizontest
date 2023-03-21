@@ -17,9 +17,9 @@ class CreateRecord implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct($i)
     {
-        //
+        $this->i = $i;
     }
 
     /**
@@ -39,7 +39,7 @@ class CreateRecord implements ShouldQueue
         $rec = Record::create([
             'data' => json_encode([
                 'env' => $env,
-                'job_id' => $jobId,
+                'job_id' => $this->i.'|'.$jobId,
                 'started_at' => $startedAt,
             ]),
         ]);
