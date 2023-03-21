@@ -14,6 +14,8 @@ class CreateRecord implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $i;
+
     /**
      * Create a new job instance.
      */
@@ -32,7 +34,7 @@ class CreateRecord implements ShouldQueue
         $startedAt = Carbon::now()->toString();
 
         $a = 0;
-        for($i = 0; $i < 2000000000; $i++) {
+        for($i = 0; $i < 200000000; $i++) {
             $a += $i;
         }
 
